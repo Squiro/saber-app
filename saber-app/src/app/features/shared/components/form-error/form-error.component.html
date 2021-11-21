@@ -1,0 +1,29 @@
+<ng-container *ngIf="formCtrl.invalid && (formCtrl.dirty || formCtrl.touched || submitted)">
+    <mat-error *ngIf="formCtrl.errors.ngbDate">
+        Fecha no válida. Respete el formato de fecha: yyyy-mm-dd.
+    </mat-error>
+    <mat-error *ngIf="formCtrl.errors.required">
+        Este campo es obligatorio.
+    </mat-error>
+    <mat-error *ngIf="formCtrl.errors.minlength">
+        Este campo debe contener al menos {{minLength}} caracteres.
+    </mat-error>
+    <mat-error *ngIf="formCtrl.errors.maxSize">
+        El tamaño máximo permitido es 25 Mb.
+    </mat-error>
+    <mat-error *ngIf="formCtrl.errors.formatType">
+        Solo se permiten archivos en formatos XLSX o XLS.
+    </mat-error>
+    <mat-error *ngIf="formCtrl.errors.imageDimension">
+        Máximas dimensiones permitidas 25600 x 15200 px.
+    </mat-error>
+    <mat-error *ngIf="formCtrl.errors.mustMatch">
+        Los campos deben ser iguales.
+    </mat-error>
+    <mat-error *ngIf="formCtrl.errors.email">
+        Ingrese una dirección de correo válida.
+    </mat-error>
+    <mat-error *ngIf="formCtrl.errors.pattern">
+        Ingrese solo números en este campo.
+    </mat-error>
+</ng-container>

@@ -1,0 +1,41 @@
+<div id="reportes-create" class="page-layout simple left-sidebar inner-sidebar inner-scroll">
+    <!-- HEADER -->
+    <div class="header accent p-16 p-sm-24" fxLayout="row" fxLayoutAlign="space-between center">
+        <!-- APP TITLE -->
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="logo" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">vpn_key</mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Keypair
+                </span>
+            </div>
+        </div>
+        <!-- / APP TITLE -->
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- CENTER -->
+        <div class="center p-24 pb-56 pr-sm-24" fusePerfectScrollbar fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="15px">
+            <!-- CONTENT -->
+            <div class="content" fxFlex>        
+                <form [formGroup]="form" fxLayoutAlign="center center">
+                    <div class="m-16" fxLayout="column" fxLayoutAlign="center center" fxFlex>                       
+                        <div class="text-center mb-16">
+                            <h2> Apriete el botón para generar un par de claves (pública y secreta). </h2>                                
+                        </div>                                                                                          
+                        <button fxFlex.lt-sm="100%" mat-raised-button class="mat-accent w-100-p mb-12" (click)="submit()" aria-label="Subir archivo" [disabled]="submitted"> 
+                            Generar claves
+                        </button>    
+                                          
+                    </div>
+                </form>              
+            </div>
+            <!-- / CONTENT -->
+        </div>
+        <!-- / CENTER -->
+    </div>
+    <!-- / CONTENT-->
+</div>

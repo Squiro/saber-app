@@ -1,0 +1,76 @@
+<div id="reportes-create" class="page-layout simple left-sidebar inner-sidebar inner-scroll">
+    <!-- HEADER -->
+    <div class="header accent p-16 p-sm-24" fxLayout="row" fxLayoutAlign="space-between center">
+        <!-- APP TITLE -->
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="logo" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">lock</mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Encriptar
+                </span>
+            </div>
+        </div>
+        <!-- / APP TITLE -->
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- CENTER -->
+        <div class="center p-24 pb-56 pr-sm-24" fusePerfectScrollbar fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="15px">
+            <!-- CONTENT -->
+            <div class="content" fxFlex>        
+                <form [formGroup]="form" fxLayoutAlign="center center">
+                    <div class="m-16" fxLayout="column" fxLayoutAlign="center center" fxFlex>                        
+                        <input formControlName="file" matInput hidden required>
+                        <input formControlName="filename" matInput hidden required>
+
+                        <div class="text-center mb-16">
+                            <h2> Seleccione la clave pública (será utilizada para cifrar el archivo). </h2>                                
+                        </div>
+
+                        <button mat-raised-button class="mat-accent w-100-p" (click)="key.click()">
+                            <mat-icon>add_file</mat-icon>
+                            <span>Subir clave pública</span>
+                            <input #key type="file" (change)="fileLoad($event, f.publicFilename, f.public, 'public')" style="display:none;" />                                        
+                        </button>
+                        
+                        <app-form-error class="mt-12 text-center" [formCtrl]="f.public" [submitted]="this.submitted"></app-form-error>
+        
+                        <ng-container *ngIf="f.public.value">                            
+                            <div class="text-center">
+                                <p>Archivo cargado: {{ f.publicFilename.value }}</p>      
+                            </div>
+                        </ng-container> 
+
+                        <div class="text-center mb-16">
+                            <h2> Elija un archivo y luego haga click en aceptar para encriptarlo. </h2>                                
+                        </div>
+                                                
+                        <button mat-raised-button class="mat-accent w-100-p" (click)="fileInput.click()">
+                            <mat-icon>add_file</mat-icon>
+                            <span>Subir archivo</span>
+                            <input #fileInput type="file" (change)="fileLoad($event, f.filename, f.file, 'file')" style="display:none;" />                                        
+                        </button>
+                        
+                        <app-form-error class="mt-12 text-center" [formCtrl]="f.file" [submitted]="this.submitted"></app-form-error>
+        
+                        <ng-container *ngIf="f.file.value">                            
+                            <div class="text-center">
+                                <p>Archivo cargado: {{ f.filename.value }}</p>      
+                            </div>
+                        </ng-container>                                               
+                                           
+                        <button fxFlex.lt-sm="100%" mat-raised-button class="mat-accent w-100-p mt-12 mb-12" (click)="submit()" aria-label="Subir archivo" [disabled]="submitted"> 
+                            Aceptar
+                        </button>                        
+                    </div>
+                </form>              
+            </div>
+            <!-- / CONTENT -->
+        </div>
+        <!-- / CENTER -->
+    </div>
+    <!-- / CONTENT-->
+</div>
